@@ -10,3 +10,17 @@ services:
     ports:
       - 1935:1935
       # - 8080:80
+
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=traefik_net
+      - traefik.http.routers.backchannel-hmnd-de.entrypoints=http
+      - traefik.http.routers.backchannel-hmnd-de.rule=Host("backchannel.hmnd.de")
+      - traefik.http.middlewares.backchannel-hmnd-de-https-redirect.redirectscheme.scheme=https
+      - traefik.http.routers.backchannel-hmnd-de.middlewares=backchannel-hmnd-de-https-redirect
+      - traefik.http.routers.backchannel-hmnd-de-secure.entrypoints=https
+      - traefik.http.routers.backchannel-hmnd-de-secure.rule=Host("backchannel.hmnd.de")
+      - traefik.http.routers.backchannel-hmnd-de-secure.tls=true
+      - traefik.http.routers.backchannel-hmnd-de-secure.tls.certresolver=http
+      - traefik.http.routers.backchannel-hmnd-de-secure.service=backchannel-hmnd-de
+      - traefik.http.services.backchannel-hmnd-de.loadbalancer.server.port=80
