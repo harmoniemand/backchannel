@@ -1,0 +1,18 @@
+
+.sidenav {
+    min-width: 0;
+    width: 2rem;
+
+    .sidenav-entry {
+        padding: 0.5rem;
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        clr-icon {
+            width: 1rem;
+            height: 1rem;
+        }
+    }
+}

@@ -1,0 +1,20 @@
+<div class="room-container">
+
+    <div class="player-container">
+        <app-player
+            [options]="{ autoplay: true, controls: true, fluid: true, sources: [{ src: 'http://localhost:8080/hls/stream_name.m3u8', type: 'application/x-mpegURL' }]}">
+        </app-player>
+    </div>
+
+    <div class="video-grid">
+        <div *ngFor="let video of videos">
+            <span *ngIf="video.userId !== currentUserId; else currentUserVideoLabel">{{ video.userId }}</span>
+            <ng-template #currentUserVideoLabel>
+                <span>You</span>
+            </ng-template>
+            <video [srcObject]="video.srcObject" (loadedmetadata)="onLoadedMetadata($event)" [muted]="video.muted">
+            </video>
+        </div>
+    </div>
+    
+</div>

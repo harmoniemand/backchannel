@@ -44,7 +44,7 @@ RUN ./configure --add-module=/src/nginx-rtmp-module-1.1.6 \
   make install
 
 ADD nginx.conf /config/nginx.conf
-ADD backchannel/dist/backchannel /static
+# ADD backchannel/dist/backchannel /static
 
 WORKDIR /
 CMD "nginx"
