@@ -1,0 +1,12 @@
+version: '3.3'
+
+networks:
+  traefik_net:
+    external: true
+
+services:
+  nginx:
+    build: .
+    ports:
+      - 1935:1935
+      - 8080:80
